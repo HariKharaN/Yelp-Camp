@@ -1,0 +1,50 @@
+<% layout('layouts/boilerplate')%> 
+
+
+<div class="row">
+    <h1 class="text-center">NEW CAMPGROUND</h1>
+    <div class="col-6 offset-3">
+        <form action="/campgrounds" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label" for="title">Title</label>
+                <input type="text" class="form-control" name="campground[title]" id="title" required>
+                <div class="valid-feedback">Its Nice</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="location">Location</label>
+                <input type="text" class="form-control" name="campground[location]" id="location" required >
+                <div class="valid-feedback">Its Nice</div>
+            </div>
+            <div class="mb-3">
+                <label for="formFileMultiple" class="form-label">Upload Image :</label>
+                <input class="form-control" name="image" type="file" id="formFileMultiple" multiple>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="price">Campground Price</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="price-label">$</span>
+                    <input name="campground[price]" type="text" class="form-control" placeholder="0.00" aria-label="price" aria-describedby="price-label" required>
+                    <div class="valid-feedback">Its Nice</div>
+                  </div>
+            </div>
+
+            
+            <div class="mb-3">
+                <label class="form-label" for="description">Description</label>
+                <textarea type="text" class="form-control" name="campground[description]" id="description" required ></textarea>
+                <div class="valid-feedback">Its Nice</div>
+            </div>
+
+            <div class="mb-3">
+                <button class="btn btn-success btn-sm">Add Campground</button>
+            </div>
+        </form>
+        <a href="/campgrounds">Back to all Camp</a>
+    </div>
+</div>
+
+
+
+
+
+    
