@@ -11,6 +11,8 @@ imageSchema.virtual('thumbnail').get( function() {
     return this.url.replace('/upload','/upload/w_180');
 })
 
+const opts = { toJSON: { virtuals: true } };
+
 const CampgroundsSchema = new Schema({
     title: String,
     images:[imageSchema],
@@ -38,9 +40,13 @@ const CampgroundsSchema = new Schema({
             ref:'Review'
         }
     ]
-});
+}, opts);
 
 
+CampgroundsSchema.virtual('properties.popUpMarkup').get( function() {
+    return `<strong><a href="/campgrounds/${this._id}">${this.title}</a><strong>
+    <p>${this.description.substring(0,20)}...</p>`
+})
 
 // DELETEING REVIEWS WHILE THE CAMPGROUND ITSELF GET DELETED
 CampgroundsSchema.post('findOneAndDelete', async function (doc) {
